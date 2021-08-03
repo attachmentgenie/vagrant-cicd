@@ -1,0 +1,63 @@
+---
+profiles::runtime::java: true
+profiles::testing::develop: true
+profiles::testing::jenkins: true
+profiles::testing::jenkins::casc_config:
+  jenkins:
+    numExecutors: 0
+  jobs:
+    - script: >
+        job('seedjob') {
+          logRotator(-1, 10)
+          scm {
+              github('attachmentgenie/jenkins-seedjob-vagrant', 'master')
+          }
+          triggers {
+              githubPush()
+          }
+          steps {
+            jobDsl {
+              failOnMissingPlugin(true)
+              failOnSeedCollision(true)
+              ignoreExisting(false)
+              ignoreMissingFiles(false)
+              lookupStrategy('JENKINS_ROOT')
+              removedConfigFilesAction('DELETE')
+              removedJobAction('DELETE')
+              removedViewAction('DELETE')
+              sandbox(false)
+              targets('*.groovy')
+              unstableOnDeprecation(true)
+            }
+          }
+        }
+  unclassified:
+    globalLibraries:
+      libraries:
+        - name: "attachmentgenie-lib"
+          retriever:
+            modernSCM:
+              scm:
+                git:
+                  remote: "https://github.com/attachmentgenie/jenkins-library.git"
+                  traits:
+                    - "gitTagDiscovery"
+profiles::testing::jenkins::listen_address: '0.0.0.0'
+profiles::testing::jenkins::lts: false
+profiles::testing::jenkins::manage_repo: true
+profiles::testing::jenkins::plugins:
+  github : {}
+  github-api: {}
+profiles::website::nginx: true
+profiles::website::nginx::proxies:
+  jenkins.qa.vagrant:
+    client_max_body_size: 20M
+    proxy_url: 'http://127.0.0.1:8080'
+    proxy_buffering: 'off'
+    proxy_http_version: '1.1'
+    proxy_read_timeout: '90'
+    proxy_set_header:
+      - 'Host $host:$server_port'
+      - 'X-Real-IP $remote_addr'
+      - 'X-Forwarded-For $proxy_add_x_forwarded_for'
+      - 'X-Forwarded-Proto $scheme'

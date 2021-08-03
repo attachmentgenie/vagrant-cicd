@@ -1,0 +1,11 @@
+---
+classes:
+  - roles::repo
+profiles::repo::nexus: true
+profiles::runtime::java: true
+profiles::runtime::java::package: 'java-1.8.0-openjdk-devel'
+profiles::website::nginx: true
+profiles::website::nginx::proxies:
+  nexus.cicd.vagrant:
+    proxy_url: 'http://127.0.0.1:8081'
+...
