@@ -16,9 +16,6 @@
 [submodule "production/modules/jenkins"]
 	path = production/modules/jenkins
 	url = https://github.com/jenkinsci/puppet-jenkins.git
-[submodule "puppet-nginx"]
-	path = puppet-nginx
-	url = https://github.com/voxpupuli/puppet-nginx.git
 [submodule "production/modules/nginx"]
 	path = production/modules/nginx
 	url = https://github.com/voxpupuli/puppet-nginx.git
