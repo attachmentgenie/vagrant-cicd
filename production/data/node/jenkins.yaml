@@ -1,5 +1,4 @@
 ---
-profiles::runtime::java: true
 profiles::testing::develop: true
 profiles::testing::jenkins: true
 profiles::testing::jenkins::casc_config:
@@ -42,12 +41,20 @@ profiles::testing::jenkins::casc_config:
                   remote: "https://github.com/attachmentgenie/jenkins-library.git"
                   traits:
                     - "gitTagDiscovery"
+    globalNexusConfiguration:
+      instanceId: "910bc85d0b814fcca8652160230b9d71"
+      nxrmConfigs:
+        - nxrm3Configuration:
+            displayName: "nexus"
+            id: "nexus"
+            serverUrl: "http://nexus.cicd.vagrant"
 profiles::testing::jenkins::listen_address: '0.0.0.0'
 profiles::testing::jenkins::lts: false
 profiles::testing::jenkins::manage_repo: true
 profiles::testing::jenkins::plugins:
   github : {}
   github-api: {}
+  nexus-jenkins-plugin: {}
 profiles::website::nginx: true
 profiles::website::nginx::proxies:
   jenkins.qa.vagrant:

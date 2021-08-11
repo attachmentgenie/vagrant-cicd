@@ -27,3 +27,5 @@ vagrant starter kit
 
 ### (G)UI interfaces
 
+    jenkins: http://jenkins.cicd.vagrant
+    nexus: http://nexus.cicd.vagrant

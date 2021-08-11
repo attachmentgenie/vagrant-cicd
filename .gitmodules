@@ -34,3 +34,6 @@
 [submodule "production/modules/wget"]
 	path = production/modules/wget
 	url = https://github.com/voxpupuli/puppet-wget.git
+[submodule "production/modules/epel"]
+	path = production/modules/epel
+	url = https://github.com/stahnma/puppet-module-epel.git

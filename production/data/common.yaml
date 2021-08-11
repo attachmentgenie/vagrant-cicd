@@ -3,4 +3,7 @@ classes:
   - roles::qa
 profiles::bootstrap::firewall: true
 profiles::bootstrap::firewall::purge: false
+profiles::bootstrap::repos: true
+profiles::bootstrap::repositories::epel: true
+profiles::runtime::java: true
 profiles::testing::jenkins::master_url: 'http://jenkins.cicd.vagrant'
