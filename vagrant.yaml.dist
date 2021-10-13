@@ -15,5 +15,5 @@ nodes:
       hostname: nexus.cicd.vagrant
       box: bento/centos-7.9
       ip: 192.168.48.44
-puppet_version: 6.24.0
+puppet_version: 6.25.0
 virtualbox_group: '/Vagrant/cicd'
