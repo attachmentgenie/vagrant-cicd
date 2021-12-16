@@ -6,14 +6,13 @@ nodes:
     - name: jenkins
       hostname: jenkins.cicd.vagrant
       box: bento/centos-7.9
-      ip: 192.168.48.42
+      ip: 192.168.56.42
     - name: slave01
       hostname: slave01.cicd.vagrant
       box: bento/centos-7.9
-      ip: 192.168.48.43
+      ip: 192.168.56.43
     - name: nexus
       hostname: nexus.cicd.vagrant
       box: bento/centos-7.9
-      ip: 192.168.48.44
-puppet_version: 6.25.0
+      ip: 192.168.56.44
 virtualbox_group: '/Vagrant/cicd'
